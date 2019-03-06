@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3E077B2222304E1100A5CB58 /* locationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E077B2122304E1100A5CB58 /* locationManager.swift */; };
 		3EEE86A8222F5EEA00F5FF98 /* RNRegionTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EEE86A7222F5EEA00F5FF98 /* RNRegionTracker.swift */; };
 		3EEE86AA222F5F1500F5FF98 /* RNRegionTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EEE86A9222F5F1500F5FF98 /* RNRegionTracker.m */; };
 		B3E7B58A1CC2AC0600A0062D /* RNRegionMonitoring.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E7B5891CC2AC0600A0062D /* RNRegionMonitoring.m */; };
@@ -26,6 +27,7 @@
 
 /* Begin PBXFileReference section */
 		134814201AA4EA6300B7C361 /* libRNRegionMonitoring.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNRegionMonitoring.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		3E077B2122304E1100A5CB58 /* locationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = locationManager.swift; sourceTree = "<group>"; };
 		3EEE86A6222F5EE900F5FF98 /* RNRegionMonitoring-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RNRegionMonitoring-Bridging-Header.h"; sourceTree = "<group>"; };
 		3EEE86A7222F5EEA00F5FF98 /* RNRegionTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RNRegionTracker.swift; sourceTree = "<group>"; };
 		3EEE86A9222F5F1500F5FF98 /* RNRegionTracker.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNRegionTracker.m; sourceTree = "<group>"; };
@@ -55,6 +57,7 @@
 		3E077B2022304DBF00A5CB58 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				3E077B2122304E1100A5CB58 /* locationManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -129,6 +132,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E077B2222304E1100A5CB58 /* locationManager.swift in Sources */,
 				3EEE86AA222F5F1500F5FF98 /* RNRegionTracker.m in Sources */,
 				3EEE86A8222F5EEA00F5FF98 /* RNRegionTracker.swift in Sources */,
 				B3E7B58A1CC2AC0600A0062D /* RNRegionMonitoring.m in Sources */,
