@@ -1,5 +1,5 @@
 import { NativeModules } from 'react-native';
 
-const { RNRegionMonitoring } = NativeModules;
+const { RegionTracker } = NativeModules;
 
-export default RNRegionMonitoring;
+export default RegionTracker;
