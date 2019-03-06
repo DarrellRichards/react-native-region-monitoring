@@ -14,6 +14,7 @@ import UIKit
 class RegionTracker: NSObject, CLLocationManagerDelegate {
     var lastLocation:CLLocation? = nil
     var locationManager:CLLocationManager! = nil
+    var url = String
     
     @objc static func requiresMainQueueSetup() -> Bool {
         return true
@@ -25,11 +26,11 @@ class RegionTracker: NSObject, CLLocationManagerDelegate {
     }
     
     @objc func config(_ url: String) -> Void {
-        print(url)
-        self.setupLocationManager(url: url)
+        self.url = url
+        self.setupLocationManager()
     }
     
-    func setupLocationManager(url: String) {
+    private func setupLocationManager() {
         locationManager?.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
         if #available(iOS 9.0, *) {
             locationManager?.allowsBackgroundLocationUpdates = true
@@ -38,7 +39,7 @@ class RegionTracker: NSObject, CLLocationManagerDelegate {
         locationManager?.startUpdatingLocation()
     }
     
-    func checkPermissions() {
+    private func checkPermissions() {
         locationManager = CLLocationManager()
         locationManager?.delegate = self
         if(CLLocationManager.authorizationStatus() != CLAuthorizationStatus.authorizedAlways){
@@ -46,8 +47,21 @@ class RegionTracker: NSObject, CLLocationManagerDelegate {
         }
     }
     
+    private func createRegion() {
+        print(self.url)
+    }
+    
+    private func updateDeviceLocation() {
+        print(self.url)
+    }
+    
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print(error)
+        let location = locations.last
+        lastLocation = location
+        // Make region and again the same cycle continues.
+        self.updateDeviceLocation(location: lastLocation)
+        self.createRegion(location: lastLocation)
+        self.locationManager.stopUpdatingLocation()
     }
     
     func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
