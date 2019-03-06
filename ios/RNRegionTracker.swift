@@ -13,7 +13,7 @@ import UIKit
 @objc(RegionTracker)
 class RegionTracker: NSObject, CLLocationManagerDelegate {
     var locationManager:CLLocationManager! = nil
-    var url = String
+    var url = String()
     
     @objc static func requiresMainQueueSetup() -> Bool {
         return true
