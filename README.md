@@ -4,6 +4,7 @@
 ## Getting started
 
 `$ npm install react-native-region-monitoring --save`
+`$ yarn add react-native-region-monitoring`
 
 ### Mostly automatic installation
 
@@ -34,20 +35,14 @@
       compile project(':react-native-region-monitoring')
   	```
 
-#### Windows
-[Read it! :D](https://github.com/ReactWindows/react-native)
-
-1. In Visual Studio add the `RNRegionMonitoring.sln` in `node_modules/react-native-region-monitoring/windows/RNRegionMonitoring.sln` folder to their solution, reference from their app.
-2. Open up your `MainPage.cs` app
-  - Add `using Region.Monitoring.RNRegionMonitoring;` to the usings at the top of the file
-  - Add `new RNRegionMonitoringPackage()` to the `List<IReactPackage>` returned by the `Packages` method
-
-
 ## Usage
 ```javascript
-import RNRegionMonitoring from 'react-native-region-monitoring';
-
-// TODO: What to do with the module?
-RNRegionMonitoring;
+import RegionTracker from 'react-native-region-monitoring';
 ```
-  
+
+*Config*
+```javascript
+
+// Currently supports URL Only
+RegionTracker.config('https://demo.valert.io');
+```
