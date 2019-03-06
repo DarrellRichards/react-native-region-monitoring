@@ -12,7 +12,6 @@ import UIKit
 
 @objc(RegionTracker)
 class RegionTracker: NSObject, CLLocationManagerDelegate {
-    var lastLocation:CLLocation? = nil
     var locationManager:CLLocationManager! = nil
     var url = String
     
@@ -47,21 +46,16 @@ class RegionTracker: NSObject, CLLocationManagerDelegate {
         }
     }
     
-    private func createRegion() {
+    private func createRegion(location:CLLocation?) {
         print(self.url)
     }
     
-    private func updateDeviceLocation() {
+    private func updateDeviceLocation(location:CLLocation?) {
         print(self.url)
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        let location = locations.last
-        lastLocation = location
-        // Make region and again the same cycle continues.
-        self.updateDeviceLocation(location: lastLocation)
-        self.createRegion(location: lastLocation)
-        self.locationManager.stopUpdatingLocation()
+        print(error)
     }
     
     func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
@@ -73,6 +67,10 @@ class RegionTracker: NSObject, CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        print("Updated Location")
+        var location = locations.last
+        // Make region and again the same cycle continues.
+        self.updateDeviceLocation(location: location)
+        self.createRegion(location: location)
+        self.locationManager.stopUpdatingLocation()
     }
 }
