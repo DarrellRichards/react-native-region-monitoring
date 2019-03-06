@@ -13,6 +13,7 @@ import UIKit
 @objc(RegionTracker)
 class RegionTracker: NSObject, CLLocationManagerDelegate {
     var locationManager:CLLocationManager! = nil
+    let locationUpdater = locationTracker();
     var url = String()
     
     @objc static func requiresMainQueueSetup() -> Bool {
@@ -52,6 +53,7 @@ class RegionTracker: NSObject, CLLocationManagerDelegate {
     
     private func updateDeviceLocation(location:CLLocation?) {
         print(self.url)
+        locationUpdater.triggerLocationUpdate(location: location!, url: self.url)
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
@@ -67,7 +69,7 @@ class RegionTracker: NSObject, CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        var location = locations.last
+        let location = locations.last
         // Make region and again the same cycle continues.
         self.updateDeviceLocation(location: location)
         self.createRegion(location: location)
