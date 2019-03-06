@@ -12,6 +12,9 @@ import UIKit
 
 struct Config {
     var url = String()
+    var exitRegion = true
+    var enterRegion = false
+    var radius = 10.0
 }
 
 @objc(RegionTracker)
@@ -29,7 +32,8 @@ class RegionTracker: NSObject, CLLocationManagerDelegate {
         self.checkPermissions()
     }
     
-    @objc func config(_ url: String) -> Void {
+    @objc func config(_ url: String, exitRegion: Bool, enterRegion: Bool, radius: Int) -> Void {
+        print(exitRegion)
         configuration.url = url
         self.setupLocationManager()
     }
@@ -54,7 +58,7 @@ class RegionTracker: NSObject, CLLocationManagerDelegate {
     private func createRegion(location:CLLocation?) {
         if (CLLocationManager.isMonitoringAvailable(for: CLCircularRegion.self)) {
             let coordinate = CLLocationCoordinate2DMake((location?.coordinate.latitude)!, (location?.coordinate.longitude)!)
-            let maxDistance = 10.0
+            let maxDistance = configuration.radius
             
             let region = CLCircularRegion(center: CLLocationCoordinate2D(
                 latitude: coordinate.latitude,
@@ -62,8 +66,8 @@ class RegionTracker: NSObject, CLLocationManagerDelegate {
                 radius: maxDistance,
                 identifier: "customMessageHere")
             
-            region.notifyOnExit = true
-            region.notifyOnEntry = false
+            region.notifyOnExit = configuration.exitRegion
+            region.notifyOnEntry = configuration.enterRegion
             
             // Stop your location manager for updating location and start regionMonitoring
             self.locationManager.stopUpdatingLocation()
