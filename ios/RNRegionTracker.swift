@@ -41,9 +41,7 @@ class RegionTracker: NSObject, CLLocationManagerDelegate {
     func checkPermissions() {
         locationManager = CLLocationManager()
         locationManager?.delegate = self
-        if(CLLocationManager.authorizationStatus() == CLAuthorizationStatus.authorizedAlways){
-            print("We have the permissions")
-        } else {
+        if(CLLocationManager.authorizationStatus() != CLAuthorizationStatus.authorizedAlways){
             locationManager.requestAlwaysAuthorization()
         }
     }
