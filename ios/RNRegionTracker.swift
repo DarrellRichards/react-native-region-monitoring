@@ -48,7 +48,23 @@ class RegionTracker: NSObject, CLLocationManagerDelegate {
     }
     
     private func createRegion(location:CLLocation?) {
-        print(self.url)
+        if (CLLocationManager.isMonitoringAvailable(for: CLCircularRegion.self)) {
+            let coordinate = CLLocationCoordinate2DMake((location?.coordinate.latitude)!, (location?.coordinate.longitude)!)
+            let maxDistance = 10.0
+            
+            let region = CLCircularRegion(center: CLLocationCoordinate2D(
+                latitude: coordinate.latitude,
+                longitude: coordinate.longitude),
+                radius: maxDistance,
+                identifier: "customMessageHere")
+            
+            region.notifyOnExit = true
+            region.notifyOnEntry = true
+            
+            // Stop your location manager for updating location and start regionMonitoring
+            self.locationManager.stopUpdatingLocation()
+            self.locationManager.startMonitoring(for: region)
+        }
     }
     
     private func updateDeviceLocation(location:CLLocation?) {
