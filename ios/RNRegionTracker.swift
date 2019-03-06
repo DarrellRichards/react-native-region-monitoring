@@ -31,8 +31,10 @@ class RegionTracker: NSObject, CLLocationManagerDelegate {
     
     func setupLocationManager(url: String) {
         locationManager?.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-        locationManager?.allowsBackgroundLocationUpdates = true
-        //    locationManager?.pausesLocationUpdatesAutomatically = false
+        if #available(iOS 9.0, *) {
+            locationManager?.allowsBackgroundLocationUpdates = true
+        }
+        locationManager?.pausesLocationUpdatesAutomatically = false
         locationManager?.startUpdatingLocation()
     }
     
