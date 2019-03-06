@@ -10,11 +10,15 @@ import Foundation
 import CoreLocation
 import UIKit
 
+struct Config {
+    var url = String()
+}
+
 @objc(RegionTracker)
 class RegionTracker: NSObject, CLLocationManagerDelegate {
     var locationManager:CLLocationManager! = nil
     let locationUpdater = locationTracker();
-    var url = String()
+    var config = Config()
     
     @objc static func requiresMainQueueSetup() -> Bool {
         return true
@@ -26,7 +30,7 @@ class RegionTracker: NSObject, CLLocationManagerDelegate {
     }
     
     @objc func config(_ url: String) -> Void {
-        self.url = url
+        config(url)
         self.setupLocationManager()
     }
     
@@ -59,7 +63,7 @@ class RegionTracker: NSObject, CLLocationManagerDelegate {
                 identifier: "customMessageHere")
             
             region.notifyOnExit = true
-            region.notifyOnEntry = true
+            region.notifyOnEntry = false
             
             // Stop your location manager for updating location and start regionMonitoring
             self.locationManager.stopUpdatingLocation()
@@ -68,8 +72,8 @@ class RegionTracker: NSObject, CLLocationManagerDelegate {
     }
     
     private func updateDeviceLocation(location:CLLocation?) {
-        print(self.url)
-        locationUpdater.triggerLocationUpdate(location: location!, url: self.url)
+        print(config)
+        locationUpdater.triggerLocationUpdate(location: location!, url: config.url)
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
@@ -77,11 +81,13 @@ class RegionTracker: NSObject, CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
-        print("Exited Region")
+        locationManager.stopMonitoring(for: region)
+        locationManager.startUpdatingLocation()
     }
     
     func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
-        print("Entered Region")
+        locationManager.stopMonitoring(for: region)
+        locationManager.startUpdatingLocation()
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
