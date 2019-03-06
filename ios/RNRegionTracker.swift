@@ -18,7 +18,7 @@ struct Config {
 class RegionTracker: NSObject, CLLocationManagerDelegate {
     var locationManager:CLLocationManager! = nil
     let locationUpdater = locationTracker();
-    var config = Config()
+    var configuration = Config()
     
     @objc static func requiresMainQueueSetup() -> Bool {
         return true
@@ -30,7 +30,7 @@ class RegionTracker: NSObject, CLLocationManagerDelegate {
     }
     
     @objc func config(_ url: String) -> Void {
-        config(url)
+        configuration.url = url
         self.setupLocationManager()
     }
     
@@ -72,8 +72,7 @@ class RegionTracker: NSObject, CLLocationManagerDelegate {
     }
     
     private func updateDeviceLocation(location:CLLocation?) {
-        print(config)
-        locationUpdater.triggerLocationUpdate(location: location!, url: config.url)
+        locationUpdater.triggerLocationUpdate(location: location!, url: configuration.url)
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
