@@ -14,8 +14,33 @@ import UIKit
 class RegionTracker: NSObject, CLLocationManagerDelegate {
     var lastLocation:CLLocation? = nil
     var locationManager:CLLocationManager! = nil
+    
+    @objc static func requiresMainQueueSetup() -> Bool {
+        return true
+    }
+    
+    override init() {
+        super.init();
+        self.checkPermissions()
+    }
+    
     @objc func config(_ url: String) -> Void {
-       print(url)
+        print(url)
+        self.setupLocationManager(url: url)
+    }
+    
+    func setupLocationManager(url: String) {
+        print(url)
+    }
+    
+    func checkPermissions() {
+        locationManager = CLLocationManager()
+        locationManager?.delegate = self
+        if(CLLocationManager.authorizationStatus() == CLAuthorizationStatus.authorizedAlways){
+            print("We have the permissions")
+        } else {
+            locationManager.requestAlwaysAuthorization()
+        }
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
