@@ -30,7 +30,10 @@ class RegionTracker: NSObject, CLLocationManagerDelegate {
     }
     
     func setupLocationManager(url: String) {
-        print(url)
+        locationManager?.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+        locationManager?.allowsBackgroundLocationUpdates = true
+        //    locationManager?.pausesLocationUpdatesAutomatically = false
+        locationManager?.startUpdatingLocation()
     }
     
     func checkPermissions() {
