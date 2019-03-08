@@ -15,13 +15,15 @@ struct Config {
     var exitRegion = true
     var enterRegion = false
     var radius = 10.0
+    var backgroundTracking = true
+    var pauseLocationUpdates = false
 }
 
 @objc(RegionTracker)
 class RegionTracker: NSObject, CLLocationManagerDelegate {
     var locationManager:CLLocationManager! = nil
     let locationUpdater = locationTracker();
-    var configuration = Config()
+    var configuration = Config();
     
     @objc static func requiresMainQueueSetup() -> Bool {
         return true
@@ -32,18 +34,22 @@ class RegionTracker: NSObject, CLLocationManagerDelegate {
         self.checkPermissions()
     }
     
-    @objc func config(_ url: String, exitRegion: Bool, enterRegion: Bool, radius: Int) -> Void {
-        print(exitRegion)
-        configuration.url = url
+    @objc func config(_ config: Dictionary<String, Any>) -> Void {
+        configuration.url = config["url"] as! String
+        configuration.backgroundTracking = config["backgroundTracking"] as! NSNumber as! Bool
+        configuration.pauseLocationUpdates = config["pauseLocationUpdates"] as! NSNumber as! Bool
+        configuration.enterRegion = config["enterRegion"] as! NSNumber as! Bool
+        configuration.exitRegion = config["exitRegion"] as! NSNumber as! Bool
+        configuration.radius = config["radius"] as! Double
         self.setupLocationManager()
     }
     
     private func setupLocationManager() {
         locationManager?.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
         if #available(iOS 9.0, *) {
-            locationManager?.allowsBackgroundLocationUpdates = true
+            locationManager?.allowsBackgroundLocationUpdates = configuration.backgroundTracking
         }
-        locationManager?.pausesLocationUpdatesAutomatically = false
+        locationManager?.pausesLocationUpdatesAutomatically = configuration.pauseLocationUpdates
         locationManager?.startUpdatingLocation()
     }
     
