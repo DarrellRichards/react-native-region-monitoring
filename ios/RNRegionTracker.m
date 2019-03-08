@@ -10,5 +10,5 @@
 #import <React/RCTBridgeModule.h>
 
 @interface RCT_EXTERN_MODULE(RegionTracker, NSObject)
-    RCT_EXTERN_METHOD(config:(NSString *)url)
+    RCT_EXTERN_METHOD(config:(NSDictionary*)config)
 @end
