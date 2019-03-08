@@ -8,11 +8,19 @@
 
 import Foundation
 import MapKit
+import Alamofire
+import SwiftyJSON
 
 class locationTracker {
     func triggerLocationUpdate(location: CLLocation, url: String) {
-        // Update Location via API Request
-        print(location)
-        print(url)
+        let parameters = [
+            "loc": [
+                "type": "Point",
+                "coordinates": [location.coordinate.longitude as Any, location.coordinate.latitude as Any]
+            ]
+        ]
+        Alamofire.request(url, method: .post, parameters: parameters, encoding: JSONEncoding(options: []), headers: headers).responseString { (data) in
+            print("We posted to server")
+        }
     }
 }
