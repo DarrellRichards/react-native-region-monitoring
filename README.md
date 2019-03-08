@@ -1,6 +1,17 @@
 
 # react-native-region-monitoring
 
+This Package is currently in the early stages
+---
+
+## Release Plan
+- Full Support Region Tracking for Swift (IOS)
+- Full Support for Region Tracking for Java (Android)
+- Adding better support for the Javascript
+- Adding tests
+- Adding badges and updated README.
+
+
 ## Getting started
 
 ### NPM Install
