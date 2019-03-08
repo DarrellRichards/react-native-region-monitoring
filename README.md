@@ -3,7 +3,12 @@
 
 ## Getting started
 
+### NPM Install
+
 `$ npm install react-native-region-monitoring --save`
+
+### Yarn Install
+
 `$ yarn add react-native-region-monitoring`
 
 ### Mostly automatic installation
@@ -40,9 +45,15 @@
 import RegionTracker from 'react-native-region-monitoring';
 ```
 
-*Config*
+### Config
 ```javascript
 
-// Currently supports URL Only
-RegionTracker.config('https://demo.valert.io');
+RegionTracker.config({
+  url: 'https://geolocation.localtunnel.me/geolocation',
+  exitRegion: true,
+  enterRegion: true,
+  radius: 15, // Meters
+  backgroundTracking: true,
+  pauseLocationUpdates: false
+});
 ```
