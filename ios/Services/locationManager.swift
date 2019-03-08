@@ -11,6 +11,7 @@ import MapKit
 
 class locationTracker {
     func triggerLocationUpdate(location: CLLocation, url: String) {
+        // Update Location via API Request
         print(location)
         print(url)
     }
