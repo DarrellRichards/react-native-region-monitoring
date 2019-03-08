@@ -10,6 +10,7 @@
 		3E077B2222304E1100A5CB58 /* locationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E077B2122304E1100A5CB58 /* locationManager.swift */; };
 		3EEE86A8222F5EEA00F5FF98 /* RNRegionTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EEE86A7222F5EEA00F5FF98 /* RNRegionTracker.swift */; };
 		3EEE86AA222F5F1500F5FF98 /* RNRegionTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EEE86A9222F5F1500F5FF98 /* RNRegionTracker.m */; };
+		A8E6B7B78F101F038C87970E /* Pods_RNRegionMonitoring.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C965D13437DAD47F53559140 /* Pods_RNRegionMonitoring.framework */; };
 		B3E7B58A1CC2AC0600A0062D /* RNRegionMonitoring.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E7B5891CC2AC0600A0062D /* RNRegionMonitoring.m */; };
 /* End PBXBuildFile section */
 
@@ -31,8 +32,11 @@
 		3EEE86A6222F5EE900F5FF98 /* RNRegionMonitoring-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RNRegionMonitoring-Bridging-Header.h"; sourceTree = "<group>"; };
 		3EEE86A7222F5EEA00F5FF98 /* RNRegionTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RNRegionTracker.swift; sourceTree = "<group>"; };
 		3EEE86A9222F5F1500F5FF98 /* RNRegionTracker.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNRegionTracker.m; sourceTree = "<group>"; };
+		4D87161B7725C2A1751CA3D0 /* Pods-RNRegionMonitoring.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RNRegionMonitoring.release.xcconfig"; path = "Target Support Files/Pods-RNRegionMonitoring/Pods-RNRegionMonitoring.release.xcconfig"; sourceTree = "<group>"; };
+		996CC7923C1B0C5D46C47062 /* Pods-RNRegionMonitoring.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RNRegionMonitoring.debug.xcconfig"; path = "Target Support Files/Pods-RNRegionMonitoring/Pods-RNRegionMonitoring.debug.xcconfig"; sourceTree = "<group>"; };
 		B3E7B5881CC2AC0600A0062D /* RNRegionMonitoring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNRegionMonitoring.h; sourceTree = "<group>"; };
 		B3E7B5891CC2AC0600A0062D /* RNRegionMonitoring.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNRegionMonitoring.m; sourceTree = "<group>"; };
+		C965D13437DAD47F53559140 /* Pods_RNRegionMonitoring.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RNRegionMonitoring.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +44,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8E6B7B78F101F038C87970E /* Pods_RNRegionMonitoring.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -52,6 +57,14 @@
 				134814201AA4EA6300B7C361 /* libRNRegionMonitoring.a */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		2284B6E34F6EAEA7C734B3BE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C965D13437DAD47F53559140 /* Pods_RNRegionMonitoring.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		3E077B2022304DBF00A5CB58 /* Services */ = {
@@ -72,7 +85,19 @@
 				B3E7B5891CC2AC0600A0062D /* RNRegionMonitoring.m */,
 				134814211AA4EA7D00B7C361 /* Products */,
 				3EEE86A6222F5EE900F5FF98 /* RNRegionMonitoring-Bridging-Header.h */,
+				7D2BCB6AD4E2BACD1A0231E3 /* Pods */,
+				2284B6E34F6EAEA7C734B3BE /* Frameworks */,
 			);
+			sourceTree = "<group>";
+		};
+		7D2BCB6AD4E2BACD1A0231E3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				996CC7923C1B0C5D46C47062 /* Pods-RNRegionMonitoring.debug.xcconfig */,
+				4D87161B7725C2A1751CA3D0 /* Pods-RNRegionMonitoring.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -82,6 +107,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 58B511EF1A9E6C8500147676 /* Build configuration list for PBXNativeTarget "RNRegionMonitoring" */;
 			buildPhases = (
+				F114D7A99F6C94798C15A5B9 /* [CP] Check Pods Manifest.lock */,
 				58B511D71A9E6C8500147676 /* Sources */,
 				58B511D81A9E6C8500147676 /* Frameworks */,
 				58B511D91A9E6C8500147676 /* CopyFiles */,
@@ -126,6 +152,31 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		F114D7A99F6C94798C15A5B9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-RNRegionMonitoring-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		58B511D71A9E6C8500147676 /* Sources */ = {
@@ -225,6 +276,7 @@
 		};
 		58B511F01A9E6C8500147676 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 996CC7923C1B0C5D46C47062 /* Pods-RNRegionMonitoring.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				HEADER_SEARCH_PATHS = (
@@ -246,6 +298,7 @@
 		};
 		58B511F11A9E6C8500147676 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4D87161B7725C2A1751CA3D0 /* Pods-RNRegionMonitoring.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				HEADER_SEARCH_PATHS = (
